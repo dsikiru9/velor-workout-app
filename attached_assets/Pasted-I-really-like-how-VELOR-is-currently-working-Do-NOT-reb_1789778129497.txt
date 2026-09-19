@@ -1,0 +1,102 @@
+I really like how VELOR is currently working. Do NOT rebuild or redesign the existing system.
+
+I only want these TWO changes:
+
+1. SHOW THE ENTIRE WORKOUT BEFORE STARTING
+
+When I select a level, I want to see the COMPLETE workout for that level first.
+
+For example:
+
+VELOR
+LEGS — LEVEL 5
+
+TODAY'S WORKOUT
+
+1. Exercise A
+   3 sets × 10 reps
+   [GIF]
+
+2. Exercise B
+   3 sets × 12 reps
+   [GIF]
+
+3. Exercise C
+   3 sets × 10 reps
+   [GIF]
+
+4. Exercise D
+   30 seconds
+   [GIF]
+
+5. Exercise E
+   3 sets × 8 reps
+   [GIF]
+
+I should be able to scroll through and see ALL exercises in today's workout before I begin.
+
+Add a clear:
+
+[ START WORKOUT ]
+
+button at the bottom.
+
+IMPORTANT:
+
+I do NOT want the app to force me to complete Exercise 1 before allowing me to see Exercise 2.
+
+The entire workout should be visible/reviewable upfront.
+
+Once I press START WORKOUT, the existing exercise-by-exercise workout flow, set tracking, rest timer, etc. can work normally.
+
+So the flow should be:
+
+Choose Level
+↓
+See COMPLETE workout
+↓
+Review all exercises
+↓
+Press START WORKOUT
+↓
+Exercise 1
+↓
+Exercise 2
+↓
+Exercise 3
+↓
+etc.
+
+Do not remove the existing workout functionality.
+
+
+2. USE MALE EXERCISE GIFs CONSISTENTLY
+
+I want the exercise demonstration GIFs to use a MALE PERSON consistently.
+
+Do NOT randomly mix male and female exercise demonstrations.
+
+For all exercises in VELOR, use male exercise demonstration GIFs/videos wherever the appropriate asset is available.
+
+The person demonstrating the exercise should preferably remain visually consistent across the app.
+
+IMPORTANT:
+
+Do not change the exercise itself just to satisfy this requirement.
+
+Keep the correct exercise demonstration, but replace mixed-gender demonstration assets with appropriate male demonstration assets where possible.
+
+Do not replace real exercise demonstrations with:
+- stick figures
+- SVG placeholders
+- static images
+- text
+- generic icons
+
+The demonstration should still clearly show the actual movement.
+
+These are the ONLY changes I am requesting right now.
+
+Keep everything else exactly as it currently works.
+
+I will start using VELOR after these changes and give you further feedback based on actual use.
