@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "VELOR Workout"
+description = "A personal progressive workout app built around bodyweight, floor space, a stable chair, walls, and other safe household resources. Includes 88 complete levels across Arms, Back & Shoulders, Legs, and Abdomen with timers and persistent progress."
+version = "1.0.0"
+id = "artifacts/velor-workout"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24190
+
+[services.development]
+run = "pnpm --filter @workspace/velor-workout run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/velor-workout", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/velor-workout/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24190"
+BASE_PATH = "/"

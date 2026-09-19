@@ -1,0 +1,1 @@
+- [Local exercise media](media-hosting.md) — core workout demonstrations should not depend on third-party image hosts that can fail in preview.
