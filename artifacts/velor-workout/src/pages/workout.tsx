@@ -17,6 +17,7 @@ export default function WorkoutPage() {
   const [resting, setResting] = useState(false);
   const [restSeconds, setRestSeconds] = useState(30);
   const [paused, setPaused] = useState(false);
+  const [started, setStarted] = useState(false);
   const startedAt = useMemo(() => Date.now(), []);
   const exercise = workout?.exercises[exerciseIndex];
   const totalSets = exercise?.workoutSets ?? 1;
@@ -45,6 +46,30 @@ export default function WorkoutPage() {
   function skipRest() { setResting(false); setRestSeconds(30); advance(); }
   if (!section || !workout || !exercise) return <div className="page-wrap"><div className="empty-state"><h1>Workout unavailable</h1><Link href="/" className="button button-dark">Back to today</Link></div></div>;
   const completedForWorkout = Object.keys(progress.completedSets).filter((key) => key.startsWith(`${workout.id}:`)).length;
+  if (!started) return <div className="workout-page">
+    <header className="workout-topbar"><Link href={`/section/${section.id}`} className="back-link" data-testid="link-back-to-levels"><ArrowLeft size={16} /> Back to levels</Link><div className="workout-top-title"><span>{section.shortName}</span><strong>Level {level}</strong></div><span className="workout-counter">{String(workout.exercises.length).padStart(2, '0')} <i>exercises</i></span></header>
+    <main className="workout-preview">
+      <div className="workout-preview-heading">
+        <div>
+          <p className="eyebrow">{workout.tier} / {workout.focus}</p>
+          <h1>{workout.title}</h1>
+          <p className="preview-copy">Review the full session before you start. Every exercise, target, and rest period is here.</p>
+        </div>
+        <span className="workout-time"><Clock3 size={16} /> {workout.estimatedMinutes} min</span>
+      </div>
+      <div className="preview-kicker"><span>Today's workout</span><span>{workout.exercises.length} exercises · {workout.exercises.reduce((sum, item) => sum + item.workoutSets, 0)} sets</span></div>
+      <div className="preview-exercise-list">
+        {workout.exercises.map((item, index) => (
+          <article className="preview-exercise" key={item.id}>
+            <div className="preview-exercise-head"><span className="preview-number">{String(index + 1).padStart(2, '0')}</span><div><h2>{item.name}</h2><p>{item.targetArea} <span>·</span> {item.primaryMuscles.join(' · ')}</p></div><strong>{item.workoutReps ? `${item.workoutSets} × ${item.workoutReps} reps` : `${item.workoutSets} × ${item.workoutDuration} sec`}</strong></div>
+            <MediaFrame src={item.mediaUrl} alt={item.mediaAlt} />
+            <div className="preview-exercise-meta"><span>Rest {item.rest} sec</span><span>{item.equipment}</span></div>
+          </article>
+        ))}
+      </div>
+      <div className="preview-start"><button className="button button-primary" onClick={() => setStarted(true)} data-testid="button-start-workout">Start workout <ArrowRight size={18} /></button><p>You can pause or skip rest at any time once you begin.</p></div>
+    </main>
+  </div>;
   return <div className="workout-page">
     <header className="workout-topbar"><Link href={`/section/${section.id}`} className="back-link" data-testid="link-exit-workout"><ArrowLeft size={16} /> Exit workout</Link><div className="workout-top-title"><span>{section.shortName}</span><strong>Level {level}</strong></div><span className="workout-counter">{String(exerciseIndex + 1).padStart(2, '0')} <i>/</i> {String(workout.exercises.length).padStart(2, '0')}</span></header>
     <div className="workout-progress"><i style={{ width: `${((exerciseIndex + (setIndex / totalSets)) / workout.exercises.length) * 100}%` }} /></div>
